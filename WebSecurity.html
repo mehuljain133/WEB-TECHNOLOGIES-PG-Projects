@@ -1,0 +1,119 @@
+<! Unit-V Web Security, Cookies and Authentication: Security threats, Security risks of a website,
+Web attacks and their prevention, Web security model, Setting, accessing and destroying cookies,
+Anonymous Access, Authentication by IP address and Domain, Integrated Windows Authentication,
+Digital signatures, Digital certificates, Firewalls. >
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unit V - Web Security & Cookies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f7fa;
+      padding: 20px;
+    }
+    .section {
+      background: #fff;
+      border: 1px solid #ccc;
+      margin: 20px 0;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Web Technologies - Unit V Demo</h1>
+
+  <!-- Security Threats Overview -->
+  <div class="section">
+    <h2>1. Security Threats & Attacks</h2>
+    <ul>
+      <li><strong>XSS (Cross-Site Scripting):</strong> Injection of malicious scripts.</li>
+      <li><strong>SQL Injection:</strong> Injecting SQL to manipulate databases.</li>
+      <li><strong>CSRF (Cross-Site Request Forgery):</strong> Unauthorized actions on behalf of users.</li>
+      <li><strong>Phishing:</strong> Fake sites to steal credentials.</li>
+      <li><strong>Clickjacking:</strong> Trick users into clicking hidden elements.</li>
+    </ul>
+    <p><em>Use input validation, CSP, token-based auth, and secure headers to mitigate.</em></p>
+  </div>
+
+  <!-- Web Security Model -->
+  <div class="section">
+    <h2>2. Web Security Model</h2>
+    <p>The web follows a <strong>same-origin policy (SOP)</strong> that prevents documents from accessing resources from different domains unless CORS headers allow it.</p>
+    <p>Security relies on layers: HTTPS → Auth → Access Control → Input Validation.</p>
+  </div>
+
+  <!-- Cookies -->
+  <div class="section">
+    <h2>3. Cookies: Set, Access, Delete</h2>
+    <button onclick="setCookie()">Set Cookie</button>
+    <button onclick="readCookie()">Read Cookie</button>
+    <button onclick="deleteCookie()">Delete Cookie</button>
+    <p id="cookieDisplay"></p>
+    <script>
+      function setCookie() {
+        document.cookie = "username=Alice; path=/; max-age=3600";
+        document.getElementById("cookieDisplay").innerText = "Cookie Set: username=Alice";
+      }
+
+      function readCookie() {
+        document.getElementById("cookieDisplay").innerText = "Cookies: " + document.cookie;
+      }
+
+      function deleteCookie() {
+        document.cookie = "username=; path=/; max-age=0";
+        document.getElementById("cookieDisplay").innerText = "Cookie Deleted";
+      }
+    </script>
+  </div>
+
+  <!-- Anonymous vs Authenticated Access -->
+  <div class="section">
+    <h2>4. Anonymous & Authenticated Access</h2>
+    <p><strong>Anonymous Access:</strong> Public pages (e.g., home, about).</p>
+    <p><strong>Authenticated Access:</strong> Requires user login. Auth can use:</p>
+    <ul>
+      <li><strong>Session Cookies</strong> (most common)</li>
+      <li><strong>JWT Tokens</strong> (modern APIs)</li>
+      <li><strong>IP Address Restrictions</strong> (below)</li>
+    </ul>
+  </div>
+
+  <!-- Simulating Authentication Methods -->
+  <div class="section">
+    <h2>5. Authentication Types (Simulated)</h2>
+    <p><strong>By IP/Domain:</strong> Done server-side. Example:</p>
+    <code>if (request.ip === "192.168.0.1") { allow(); }</code>
+
+    <p><strong>Integrated Windows Authentication (IWA):</strong> Uses Windows credentials (for intranet).</p>
+
+    <p><strong>Digital Signatures & Certificates:</strong> Uses public key infrastructure (PKI).</p>
+    <ul>
+      <li><strong>Signature:</strong> Confirms origin & integrity</li>
+      <li><strong>Certificate:</strong> Issued by trusted CA (like SSL certs)</li>
+    </ul>
+    <p><em>Demo: HTTPS uses certificates to secure data transfer.</em></p>
+  </div>
+
+  <!-- Firewalls -->
+  <div class="section">
+    <h2>6. Firewalls</h2>
+    <p><strong>Firewall:</strong> A system that monitors and controls incoming/outgoing network traffic.</p>
+    <ul>
+      <li><strong>Host-based:</strong> Runs on devices</li>
+      <li><strong>Network-based:</strong> Protects LAN/organization</li>
+    </ul>
+    <p><em>Used to block ports, IPs, and unauthorized access attempts.</em></p>
+  </div>
+
+</body>
+</html>
