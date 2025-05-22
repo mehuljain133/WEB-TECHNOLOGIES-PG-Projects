@@ -1,0 +1,159 @@
+<! Unit-II Front-end Development: Introduction to HTML5, HTML elements, HTML tags, lists, tables, frames, forms, basics of XHTML, CSS style sheets, DOM, XML, XSLT! >
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Tech Unit-II Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .styled {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    iframe {
+      border: 2px solid #333;
+      width: 100%;
+      height: 100px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌐 Web Technologies - Unit II Demo</h1>
+
+  <!-- HTML Elements: Lists -->
+  <div class="styled">
+    <h2>HTML Lists</h2>
+    <p><strong>Ordered List:</strong></p>
+    <ol>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ol>
+    <p><strong>Unordered List:</strong></p>
+    <ul>
+      <li>Python</li>
+      <li>Java</li>
+      <li>PHP</li>
+    </ul>
+  </div>
+
+  <!-- Tables -->
+  <div class="styled">
+    <h2>HTML Table</h2>
+    <table>
+      <tr><th>Name</th><th>Course</th></tr>
+      <tr><td>Alice</td><td>Web Tech</td></tr>
+      <tr><td>Bob</td><td>AI</td></tr>
+    </table>
+  </div>
+
+  <!-- Iframe (Frames) -->
+  <div class="styled">
+    <h2>HTML Frame (via iframe)</h2>
+    <iframe src="https://example.com"></iframe>
+  </div>
+
+  <!-- Forms -->
+  <div class="styled">
+    <h2>HTML Form</h2>
+    <form>
+      <label>Name: <input type="text" name="name" /></label>
+      <label>Email: <input type="email" name="email" /></label>
+      <label>Course:
+        <select name="course">
+          <option>Web Tech</option>
+          <option>Data Science</option>
+        </select>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- DOM Manipulation -->
+  <div class="styled">
+    <h2>DOM Example</h2>
+    <p id="demo">Click the button to change this text:</p>
+    <button onclick="document.getElementById('demo').innerText = 'Text changed via DOM!'">Change Text</button>
+  </div>
+
+  <!-- XML + XSLT -->
+  <div class="styled">
+    <h2>XML + XSLT Demo</h2>
+    <div id="xmlOutput"></div>
+    <script>
+      const xml = `
+        <students>
+          <student>
+            <name>Alice</name>
+            <course>Web Tech</course>
+          </student>
+          <student>
+            <name>Bob</name>
+            <course>AI</course>
+          </student>
+        </students>
+      `;
+
+      const xslt = `
+        <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+          <xsl:template match="/">
+            <table border="1">
+              <tr><th>Name</th><th>Course</th></tr>
+              <xsl:for-each select="students/student">
+                <tr>
+                  <td><xsl:value-of select="name"/></td>
+                  <td><xsl:value-of select="course"/></td>
+                </tr>
+              </xsl:for-each>
+            </table>
+          </xsl:template>
+        </xsl:stylesheet>
+      `;
+
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xml, "text/xml");
+      const xslDoc = parser.parseFromString(xslt, "text/xml");
+
+      const xsltProcessor = new XSLTProcessor();
+      xsltProcessor.importStylesheet(xslDoc);
+      const resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
+      document.getElementById("xmlOutput").appendChild(resultDocument);
+    </script>
+  </div>
+
+  <!-- XHTML Example -->
+  <div class="styled">
+    <h2>XHTML Basics</h2>
+    <p>This document uses HTML5, but follows XHTML rules:</p>
+    <ul>
+      <li>Tags are properly closed</li>
+      <li>Nested correctly</li>
+      <li>Lowercase tags</li>
+    </ul>
+  </div>
+
+</body>
+</html>
+
+
